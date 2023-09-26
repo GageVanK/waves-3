@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeIcon, Text, Title, Container, SimpleGrid, rem } from '@mantine/core';
+import { ThemeIcon, Text, Title, Container, SimpleGrid, rem, Center } from '@mantine/core';
 import { VscLink } from "react-icons/vsc";
 import { BiWorld } from "react-icons/bi";
 import { MdOutlineAttachMoney } from "react-icons/md";
@@ -11,7 +11,7 @@ import { RiCheckboxMultipleLine } from "react-icons/ri";
 import { PiUsersThreeDuotone } from "react-icons/pi";
 import classes from './Welcome.module.css';
 
-export const MOCKDATA = [
+export const WAVESFEATURE = [
   {
     icon: GiBigWave,
     title: 'Why Waves?',
@@ -85,22 +85,24 @@ export function Feature({ icon: Icon, title, description }: FeatureProps) {
 }
 
 export function Welcome() {
-  const features = MOCKDATA.map((feature, index) => <Feature {...feature} key={index} />);
+  const features = WAVESFEATURE.map((feature, index) => <Feature {...feature} key={index} />);
 
   return (
     <Container className={classes.wrapper}>
-      <Text className={classes.title} variant="gradient"
-      gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>Waves</Text>
-
+      <Center>
+      <Text fw={900} fs="italic" variant="gradient" gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>Waves</Text>
+      </Center>
       <Container size={560} p={0}>
-        <Text size="sm" className={classes.description}>
+      <Center>
+        <Text fw={700} c="dimmed" size="md">
           Decentralized Live Streaming
         </Text>
+      </Center>
       </Container>
-
+    
       <SimpleGrid
         mt={60}
-        cols={{ base: 1, sm: 2, md: 3 }}
+        cols={{ base: 1, sm: 1, md: 1 }}
         spacing={{ base: 'xl', md: 50 }}
         verticalSpacing={{ base: 'xl', md: 50 }}
       >

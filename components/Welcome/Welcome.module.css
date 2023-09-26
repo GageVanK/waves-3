@@ -3,17 +3,5 @@
   padding-bottom: calc(var(--mantine-spacing-xl) * 4);
 }
 
-.title {
-  font-family: Greycliff CF, var(--mantine-font-family);
-  font-weight: 900;
-  margin-bottom: var(--mantine-spacing-md);
-  text-align: center;
 
 
-}
-
-.description {
-  text-align: center;
-
-
-}

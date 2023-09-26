@@ -1,14 +1,17 @@
+'use client';
 import '@mantine/core/styles.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { MantineProvider, ColorSchemeScript, AppShell, Button } from '@mantine/core';
 import { theme } from '../theme';
+import { DeSoIdentityProvider } from "react-deso-protocol";
+import { MantineHeader } from '../components/MantineAppShell/MantineHeader/MantineHeader';
 
-export const metadata = {
-  title: 'Waves',
-  description: 'Decentralize Live Streaming',
-};
 
 export default function RootLayout({ children }: { children: any }) {
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
   return (
     <html lang="en">
       <head>
@@ -20,7 +23,31 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider defaultColorScheme="dark" theme={theme}>{children}</MantineProvider>
+        <DeSoIdentityProvider>
+        <MantineProvider theme={theme}>
+        
+        <AppShell
+      padding="md"
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'md',
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
+    >
+      <AppShell.Header><MantineHeader /></AppShell.Header>
+      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Main >
+        <Button onClick={toggleDesktop} visibleFrom="sm">
+          Toggle navbar
+        </Button>
+       
+          {children}
+          </AppShell.Main>
+   </AppShell>
+          
+          </MantineProvider>
+          </DeSoIdentityProvider>
       </body>
     </html>
   );
