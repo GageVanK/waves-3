@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: any }) {
         collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
     >
-      <AppShell.Header><MantineHeader /></AppShell.Header>
+      <AppShell.Header>header</AppShell.Header>
       <AppShell.Navbar>Navbar</AppShell.Navbar>
       <AppShell.Main >
         <Button onClick={toggleDesktop} visibleFrom="sm">
